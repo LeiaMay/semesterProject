@@ -60,7 +60,7 @@ class TestPersonalFinanceTracker(unittest.TestCase):
         self.finance_tracker.add_transaction('2003-05-11', 'Test Expense', -50, 'Expense')
         self.finance_tracker.export_transactions_to_csv(filename)
         self.assertTrue(os.path.exists(filename))
-        self.finance_tracker = PersonalFinanceTracker()  # Resetting finance tracker
+        self.finance_tracker = PersonalFinanceTracker() 
         self.finance_tracker.import_transactions_from_csv(filename)
         self.assertEqual(len(self.finance_tracker.transactions), 1)
         os.remove(filename)
