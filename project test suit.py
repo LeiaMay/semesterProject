@@ -20,12 +20,12 @@ class TestPersonalFinanceTracker(unittest.TestCase):
 
     def test_add_transaction(self): 
         """tests add transaction method"""
-        self.finance_tracker.add_transaction('2024-04-01', 'Test Transaction', 100, 'Test Category')
+        self.finance_tracker.add_transaction('2020-01-11', 'Test Transaction', 100, 'Test Category')
         self.assertEqual(len(self.finance_tracker.transactions), 1)
 
     def test_view_transactions(self): 
         """tests view transactions method"""
-        self.finance_tracker.add_transaction('2024-04-01', 'Test Transaction', 100, 'Test Category')
+        self.finance_tracker.add_transaction('2005-11-08', 'Test Transaction', 100, 'Test Category')
         captured_output = StringIO()
         sys.stdout = captured_output
         self.finance_tracker.view_transactions()
@@ -34,8 +34,8 @@ class TestPersonalFinanceTracker(unittest.TestCase):
 
     def test_calculate_summary(self): 
         """tests calculate summary method"""
-        self.finance_tracker.add_transaction('2024-04-01', 'Test Expense', -50, 'Expense')
-        self.finance_tracker.add_transaction('2024-04-02', 'Test Income', 100, 'Income')
+        self.finance_tracker.add_transaction('2023-05-20', 'Test Expense', -50, 'Expense')
+        self.finance_tracker.add_transaction('2023-05-20', 'Test Income', 100, 'Income')
         captured_output = StringIO()
         sys.stdout = captured_output
         self.finance_tracker.calculate_summary()
@@ -45,8 +45,8 @@ class TestPersonalFinanceTracker(unittest.TestCase):
 
     def test_categorize_transactions(self): 
         """tests categorize transactions method"""
-        self.finance_tracker.add_transaction('2024-04-01', 'Test Expense', -50, 'Expense')
-        self.finance_tracker.add_transaction('2024-04-02', 'Test Income', 100, 'Income')
+        self.finance_tracker.add_transaction('2024-01-21', 'Test Expense', -50, 'Expense')
+        self.finance_tracker.add_transaction('2005-02-15', 'Test Income', 100, 'Income')
         captured_output = StringIO()
         sys.stdout = captured_output
         self.finance_tracker.categorize_transactions()
@@ -57,7 +57,7 @@ class TestPersonalFinanceTracker(unittest.TestCase):
     def test_export_import_transactions(self): 
         """tests export transactions method"""
         filename = 'test_transactions.csv'
-        self.finance_tracker.add_transaction('2024-04-01', 'Test Expense', -50, 'Expense')
+        self.finance_tracker.add_transaction('2003-05-11', 'Test Expense', -50, 'Expense')
         self.finance_tracker.export_transactions_to_csv(filename)
         self.assertTrue(os.path.exists(filename))
         self.finance_tracker = PersonalFinanceTracker()  # Resetting finance tracker
